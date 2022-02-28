@@ -52,7 +52,12 @@
     "allowlist": {
       "all": true
     },
-    "windows": [],
+    "windows": [
+      {
+        "title": "hello",
+        "label": "hello"        
+      }
+    ],
     "systemTray": {
       "iconPath": "icons/icon.ico"
     },

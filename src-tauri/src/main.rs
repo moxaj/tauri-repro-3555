@@ -3,9 +3,6 @@
     windows_subsystem = "windows"
 )]
 
-use std::error::Error;
-use tauri::WindowBuilder;
-
 fn main() {
     tauri::Builder::default()
         .system_tray(
@@ -26,24 +23,7 @@ fn main() {
                 }
             }
         })
-        .setup(|app| {
-            app.create_window(
-                "overlay",
-                tauri::WindowUrl::App("index.html".into()),
-                move |window_builder, attributes| {
-                    (
-                        window_builder
-                            .transparent(true)
-                            .visible(false)
-                            .always_on_top(true)
-                            .skip_taskbar(true),
-                        attributes,
-                    )
-                },
-            )
-            .map(|_| ())
-            .map_err(|err| Box::new(err) as Box<dyn Error + Send>)
-        })
+        .setup(|app| Ok(()))
         .run(tauri::generate_context!())
         .unwrap();
 }
