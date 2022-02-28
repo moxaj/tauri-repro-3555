@@ -23,7 +23,6 @@ fn main() {
                 }
             }
         })
-        .setup(|app| Ok(()))
         .run(tauri::generate_context!())
         .unwrap();
 }
